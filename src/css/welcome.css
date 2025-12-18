@@ -108,7 +108,13 @@
 
 /* reduce vertical gap between the & and second name */
 .welcome-names span + span {
-    margin-top: 0.25rem;
+    margin-top: 0.05rem;
+    line-height: 0.95; /* tighten line height so the second name sits closer */
+}
+
+/* make first line slightly closer to second */
+.welcome-names span:first-child {
+    margin-bottom: 0.05rem;
 }
 
 /* ===============================

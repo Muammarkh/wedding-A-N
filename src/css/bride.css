@@ -86,8 +86,16 @@
     font-size: 4rem;
     font-family: var(--sacramento);
     font-weight: 400;
-    margin-top: 2rem;
+    margin-top: 0.6rem; /* reduced spacing so names sit closer */
     color: #c9a24d;
+}
+
+/* Name details (child / parents) */
+.bride .bride_couple li p {
+    margin: 0.2rem 0;
+    line-height: 1.3;
+    font-size: 0.95rem;
+    color: #333;
 }
 
 /* ORNAMEN ICON */
@@ -187,7 +195,7 @@
     }
 
     .bride .bride_couple span {
-        margin: 1rem 0;
+        margin: 0.6rem 0;
     }
 
     .hadist {
