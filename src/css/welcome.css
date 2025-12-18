@@ -82,17 +82,15 @@
 .welcome-frame::after {
     content: "";
     position: absolute;
-    inset: -14%;
+    inset: -14%; /* same as global frame */
     background: url("../assets/ornaments/bingkai.svg") no-repeat center;
-    background-size: 140% auto; /* slightly enlarge so decorative edges are visible */
-    background-position: center;
-    background-repeat: no-repeat;
-    display: block;
-    z-index: 9999; /* ensure frame sits above other elements */
+    background-size: contain; /* let svg scale naturally to frame */
+    z-index: 2; /* sit above photo but respect stacking context */
     pointer-events: none;
 }
 .welcome-frame {
     overflow: visible; /* ensure overlay is not clipped */
+    position: relative; /* ensure ::after is positioned correctly */
 }
 
 /* ===============================
