@@ -171,12 +171,25 @@ p {
     opacity: 0;
     transform: scale(0.98);
     will-change: opacity, transform;
-    animation: frameIn .7s .25s ease forwards;
+    animation: frameIn 1s .25s ease forwards;
 }
 
 @keyframes frameIn {
     from { opacity: 0; transform: scale(0.98); }
     to   { opacity: 1; transform: scale(1); }
+}
+
+/* slower smoother transitions */
+[data-aos] {
+    will-change: opacity, transform;
+    opacity: 0; /* start hidden; AOS will toggle class to animate */
+    transition: opacity 1s cubic-bezier(.22,.61,.36,1), transform 1s cubic-bezier(.22,.61,.36,1);
+}
+
+/* when AOS marks element as animated, make it fully visible */
+[data-aos].aos-animate {
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 /* AOS fallback: prefer transform/opacity only, minimal jank */
@@ -206,7 +219,7 @@ p {
     will-change: opacity, transform;
     opacity: 0; /* start invisible */
     transform: translateY(-8px) scale(0.98);
-    animation: ornamentIn 0.8s ease forwards;
+    animation: ornamentIn 1s ease forwards;
 }
 
 .site-ornament-top-left { animation-delay: 0.12s; }
@@ -251,7 +264,7 @@ p {
         opacity: 0.98;
         /* lightweight entrance enabled on mobile */
         will-change: opacity, transform;
-        animation: ornamentIn .6s ease forwards;
+        animation: ornamentIn .9s ease forwards;
     }
 
     .site-ornament-top-right, .site-ornament-top-left {
