@@ -241,8 +241,9 @@ p {
     .site-ornament {
         width: clamp(64px, 28vw, 200px); /* larger on mobile */
         opacity: 0.98;
-        /* stop continuous animations on mobile to reduce jank */
-        animation: none !important;
+        /* lightweight entrance enabled on mobile */
+        will-change: opacity, transform;
+        animation: ornamentIn .6s ease forwards;
     }
 
     .site-ornament-top-right, .site-ornament-top-left {
@@ -253,13 +254,24 @@ p {
         bottom: calc(0.2rem + env(safe-area-inset-bottom));
     }
 
-    /* stop ornament / decorative element animations to improve performance */
+    /* allow decorative animations but keep them light on mobile */
     .bride i, .hadist i, .audio button.active {
-        animation: none !important;
+        /* reuse existing keyframes but with mobile-friendly timing */
+        animation-duration: 3s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
     }
 
     /* shorten general transition times to make UI feel snappier */
     * {
         transition-duration: .25s !important;
     }
-} 
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .site-ornament, .bride i, .hadist i, .audio button.active, [data-aos] {
+        animation: none !important;
+        transition: none !important;
+    }
+}  
